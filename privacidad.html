@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - Black Box Informática</title>
+    <meta name="description" content="Política de privacidad de Black Box Informática. Cómo protegemos y gestionamos tus datos personales.">
+    <link rel="icon" type="image/png" href="assets/images/logotipo_Bueno_SinFondo.png">
+    <link rel="apple-touch-icon" href="assets/images/logotipo_Bueno_SinFondo.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-black: #0C0C0C;
+            --dark-brown: #481E14;
+            --medium-orange: #9B3922;
+            --bright-orange: #F2613F;
+            --text-light: #F5F5F5;
+            --text-gray: #A0A0A0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-black);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--bright-orange) 0%, var(--medium-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--bright-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--bright-orange) 0%, var(--medium-orange) 100%);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(242, 97, 63, 0.3);
+        }
+
+        /* Logo */
+        .logo-img {
+            height: 64px;
+            width: auto;
+            display: block;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .logo-img { height: 52px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="assets/images/logotipo_Bueno_SinFondo.png" alt="Black Box Informática - Logo" class="logo-img" />
+                    <span class="font-display font-bold text-xl text-white">Black Box</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white">Inicio</a>
+                    <a href="index.html#servicios" class="nav-link text-gray-300 hover:text-white">Servicios</a>
+                    <a href="index.html#proceso" class="nav-link text-gray-300 hover:text-white">Proceso</a>
+                    <a href="index.html#contacto" class="nav-link text-gray-300 hover:text-white">Contacto</a>
+                    <a href="index.html#contacto" class="btn-primary px-6 py-2 rounded-lg font-medium">Empezar</a>
+                </div>
+                
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-12">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12">
+                <h1 class="font-display font-bold text-3xl md:text-5xl mb-6">
+                    <span class="gradient-text">Política de Privacidad</span>
+                </h1>
+                <p class="text-xl text-gray-400">
+                    Última actualización: 17 de noviembre de 2025
+                </p>
+            </div>
+
+            <div class="glass p-8 rounded-2xl">
+                <div class="prose prose-invert max-w-none">
+                    <h2 class="text-2xl font-bold mb-4 text-white">1. Responsable del Tratamiento</h2>
+                    <p class="mb-6 text-gray-300">
+                        El responsable del tratamiento de los datos personales recogidos en este sitio web es:<br>
+                        <strong class="text-white">Black Box Informática</strong><br>
+                        Email: blackboxinformatica04@gmail.com<br>
+                        Los datos personales son tratados con la finalidad de gestionar las solicitudes de contacto y presupuestos de nuestros clientes.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">2. Datos que Recopilamos</h2>
+                    <p class="mb-4 text-gray-300">
+                        A través del formulario de contacto, recopilamos los siguientes datos personales:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li>Nombre completo (obligatorio)</li>
+                        <li>Correo electrónico (obligatorio)</li>
+                        <li>Teléfono de contacto (opcional)</li>
+                        <li>Mensaje o contenido de la consulta (obligatorio)</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">3. Finalidad del Tratamiento</h2>
+                    <p class="mb-6 text-gray-300">
+                        Los datos personales recopilados serán utilizados exclusivamente para:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li>Responder a consultas y solicitudes de información</li>
+                        <li>Elaborar presupuestos personalizados</li>
+                        <li>Prestar los servicios solicitados de diseño web</li>
+                        <li>Mantener comunicación con los clientes durante el proyecto</li>
+                        <li>Envío de información relacionada con los servicios contratados</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">4. Legitimación del Tratamiento</h2>
+                    <p class="mb-6 text-gray-300">
+                        La base legal para el tratamiento de sus datos personales es:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li><strong>Artículo 6.1.b del RGPD:</strong> El tratamiento es necesario para la ejecución de un contrato en el que el interesado es parte o para la aplicación a petición de este de medidas precontractuales.</li>
+                        <li><strong>Artículo 6.1.f del RGPD:</strong> El tratamiento es necesario para la satisfacción de intereses legítimos perseguidos por el responsable del tratamiento.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">5. Conservación de los Datos</h2>
+                    <p class="mb-6 text-gray-300">
+                        Los datos personales proporcionados se conservarán durante el tiempo necesario para:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li>Atender la solicitud inicial (mínimo 1 año)</li>
+                        <li>Cumplir con las obligaciones legales aplicables</li>
+                        <li>Gestionar cualquier reclamación o responsabilidad derivada</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">6. Comunicación de Datos</h2>
+                    <p class="mb-6 text-gray-300">
+                        Black Box Informática no cederá ni comunicará sus datos a terceros, salvo en los siguientes casos:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li>Cuando exista una obligación legal</li>
+                        <li>Para la prestación de servicios directamente relacionados con el encargo (proveedores de hosting, dominios, etc.)</li>
+                        <li>Con el consentimiento expreso del interesado</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">7. Derechos del Interesado</h2>
+                    <p class="mb-4 text-gray-300">
+                        Como titular de los datos, usted puede ejercer los siguientes derechos:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li><strong>Derecho de acceso:</strong> Puede solicitar información sobre los datos personales que tenemos sobre usted.</li>
+                        <li><strong>Derecho de rectificación:</strong> Puede solicitar la corrección de datos personales inexactos o incompletos.</li>
+                        <li><strong>Derecho de supresión:</strong> Puede solicitar la eliminación de sus datos personales cuando ya no sean necesarios.</li>
+                        <li><strong>Derecho de limitación:</strong> Puede solicitar la limitación del tratamiento de sus datos personales.</li>
+                        <li><strong>Derecho de oposición:</strong> Puede oponerse al tratamiento de sus datos personales.</li>
+                        <li><strong>Derecho de portabilidad:</strong> Puede solicitar la transferencia de sus datos a otro responsable.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">8. Seguridad de los Datos</h2>
+                    <p class="mb-6 text-gray-300">
+                        Implementamos medidas técnicas y organizativas adecuadas para garantizar la seguridad de sus datos personales y evitar su alteración, pérdida, tratamiento o acceso no autorizado, teniendo en cuenta el estado de la tecnología, la naturaleza de los datos almacenados y los riesgos a los que están expuestos.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">9. Contacto</h2>
+                    <p class="mb-6 text-gray-300">
+                        Para ejercer sus derechos o resolver cualquier duda sobre el tratamiento de sus datos personales, puede contactar con nosotros a través de:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li>Email: blackboxinformatica04@gmail.com</li>
+                        <li>Asunto: "Protección de Datos Personales"</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">10. Actualizaciones</h2>
+                    <p class="mb-6 text-gray-300">
+                        Esta política de privacidad puede ser actualizada para reflejar cambios en nuestros servicios o en la legislación vigente. Cualquier modificación será comunicada a través de este sitio web.
+                    </p>
+
+                    <div class="mt-8 p-6 bg-gray-800 rounded-xl">
+                        <p class="text-sm text-gray-400 text-center">
+                            Al utilizar nuestro formulario de contacto, usted reconoce haber leído y aceptado esta política de privacidad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                    <img src="assets/images/logotipo_Bueno_SinFondo.png" alt="Black Box Informática - Logo" class="logo-img" loading="lazy" />
+                    <div>
+                        <h3 class="font-display font-bold text-xl text-white">Black Box Informática</h3>
+                        <p class="text-gray-400 text-sm">Diseño web profesional en 10 días</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap items-center justify-center space-x-6 text-sm">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Inicio</a>
+                    <a href="index.html#servicios" class="text-gray-400 hover:text-white transition-colors">Servicios</a>
+                    <a href="index.html#proceso" class="text-gray-400 hover:text-white transition-colors">Proceso</a>
+                    <a href="index.html#contacto" class="text-gray-400 hover:text-white transition-colors">Contacto</a>
+                    <a href="privacidad.html" class="text-gray-400 hover:text-white transition-colors">Privacidad</a>
+                    <a href="legal.html" class="text-gray-400 hover:text-white transition-colors">Aviso Legal</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Black Box Informática. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            // Simple mobile menu functionality
+            alert('Menú móvil - Funcionalidad básica');
+        }
+    </script>
+</body>
+</html>

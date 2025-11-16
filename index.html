@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Box Informática - Creamos tu web en 10 días | Diseño Web Profesional</title>
+    <meta name="description" content="Diseño web profesional en solo 10 días. Somos dos estudiantes de Ingeniería Informática especializados en crear webs modernas para pequeñas y medianas empresas. Precios competitivos y entrega rápida.">
+    <link rel="icon" type="image/png" href="assets/images/logotipo_Bueno_SinFondo.png">
+    <link rel="apple-touch-icon" href="assets/images/logotipo_Bueno_SinFondo.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-black: #0C0C0C;
+            --dark-brown: #481E14;
+            --medium-orange: #9B3922;
+            --bright-orange: #F2613F;
+            --text-light: #F5F5F5;
+            --text-gray: #A0A0A0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-black);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--primary-black);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--medium-orange);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--bright-orange);
+        }
+        
+        /* Hero Background */
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-brown) 50%, var(--medium-orange) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/images/hero-bg.png') center/cover;
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--bright-orange) 0%, var(--medium-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Service Cards */
+        .service-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(242, 97, 63, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--bright-orange);
+            box-shadow: 0 20px 40px rgba(242, 97, 63, 0.2);
+        }
+        
+        /* Process Steps */
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            width: 40px;
+            height: 2px;
+            background: var(--medium-orange);
+            transform: translateY(-50%);
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 280px;
+        }
+        
+        /* Form Styles */
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--bright-orange);
+            box-shadow: 0 0 0 3px rgba(242, 97, 63, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: var(--text-gray);
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--bright-orange) 0%, var(--medium-orange) 100%);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(242, 97, 63, 0.3);
+        }
+        
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--bright-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .process-step::after {
+                display: none;
+            }
+            /* Logo a tamaño ligeramente menor en móvil */
+            .logo-img { height: 52px; }
+        }
+
+        /* Logo */
+        .logo-img {
+            height: 64px;
+            width: auto;
+            display: block;
+        }
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            50% { transform: translateX(4px); }
+            75% { transform: translateX(-3px); }
+            100% { transform: translateX(0); }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#inicio" class="flex items-center space-x-3">
+                    <img src="assets/images/logotipo_Bueno_SinFondo.png" alt="Black Box Informática - Logo" class="logo-img" />
+                    <span class="font-display font-bold text-xl text-white">Black Box</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="nav-link text-gray-300 hover:text-white">Inicio</a>
+                    <a href="#servicios" class="nav-link text-gray-300 hover:text-white">Servicios</a>
+                    <a href="#proceso" class="nav-link text-gray-300 hover:text-white">Proceso</a>
+                    <a href="#contacto" class="nav-link text-gray-300 hover:text-white">Contacto</a>
+                    <a href="#contacto" class="btn-primary px-6 py-2 rounded-lg font-medium">Empezar</a>
+                </div>
+                
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-40 md:hidden">
+            <div class="p-6 pt-20">
+                <a href="#inicio" class="block py-3 text-gray-300 hover:text-white">Inicio</a>
+                <a href="#servicios" class="block py-3 text-gray-300 hover:text-white">Servicios</a>
+                <a href="#proceso" class="block py-3 text-gray-300 hover:text-white">Proceso</a>
+                <a href="#contacto" class="block py-3 text-gray-300 hover:text-white">Contacto</a>
+                <a href="#contacto" class="btn-primary block px-6 py-3 rounded-lg font-medium mt-4 text-center">Empezar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center relative pt-20">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="font-display font-black text-4xl md:text-6xl lg:text-7xl mb-6">
+                    <span class="gradient-text">Creamos tu página web</span><br>
+                    <span class="text-white">completa en solo</span><br>
+                    <span class="gradient-text">10 días</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Somos dos estudiantes de Ingeniería Informática apasionados por crear experiencias digitales excepcionales. 
+                    Rápidos, profesionales y con precios muy por debajo del mercado.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="#contacto" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center space-x-2">
+                        <span>Contactar ahora</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#servicios" class="glass px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center space-x-2 hover:bg-white hover:bg-opacity-10 transition-all">
+                        <span>Ver servicios</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold gradient-text mb-2">10 Días</div>
+                        <div class="text-gray-400">Entrega garantizada</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold gradient-text mb-2">70%</div>
+                        <div class="text-gray-400">Menor precio que la competencia</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold gradient-text mb-2">24h</div>
+                        <div class="text-gray-400">Tiempo de respuesta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="font-display font-bold text-3xl md:text-5xl mb-8">
+                    <span class="gradient-text">¿Quiénes somos?</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-left">
+                        <div class="space-y-6">
+                            <p class="text-lg text-gray-300 leading-relaxed">
+                                Somos <span class="gradient-text font-semibold">Marcel y Alex</span>, dos estudiantes de 
+                                <span class="gradient-text font-semibold">Ingeniería Informática</span> apasionados por crear 
+                                experiencias digitales excepcionales. Nos especializamos en diseñar, renovar y optimizar 
+                                páginas web para pequeñas y medianas empresas.
+                            </p>
+                            
+                            <p class="text-lg text-gray-300 leading-relaxed">
+                                Nuestro enfoque se centra en entregar <span class="gradient-text font-semibold">webs modernas, 
+                                rápidas, optimizadas y profesionales</span> que ayuden a nuestros clientes a destacar 
+                                en el mundo digital. Cada proyecto es una oportunidad de aplicar los últimos estándares 
+                                de diseño y tecnología.
+                            </p>
+                            
+                            <p class="text-lg text-gray-300 leading-relaxed">
+                                Lo que nos diferencia es nuestra <span class="gradient-text font-semibold">velocidad de trabajo, 
+                                respuesta ágil</span> y precios <span class="gradient-text font-semibold">muy competitivos</span> 
+                                pensados específicamente para pequeños y medianos negocios que necesitan una presencia 
+                                digital profesional sin costes excesivos.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="">
+                        <div class="relative">
+                            <div class="w-80 h-80 mx-auto relative">
+                                <div class="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl transform rotate-6"></div>
+                                <div class="absolute inset-0 bg-gray-800 rounded-3xl flex items-center justify-center p-8">
+                                    <img src="assets/images/about-us.png" alt="Javier y Carlos - Black Box Informática" class="w-full h-full object-cover rounded-2xl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display font-bold text-3xl md:text-5xl mb-6">
+                    <span class="gradient-text">Servicios</span> que ofrecemos
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Soluciones completas para llevar tu presencia digital al siguiente nivel
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-desktop text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-white">Diseño Web Moderno</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Creamos páginas web con los últimos estándares de diseño, totalmente adaptativas y con experiencia de usuario excepcional. 
+                        Utilizamos tecnologías modernas como HTML5, CSS3, JavaScript y frameworks actuales para garantizar un resultado profesional.
+                    </p>
+                </div>
+                
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-rocket text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-white">Mejora de Webs Antiguas</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Renovamos y optimizamos páginas existentes, mejorando velocidad, diseño y funcionalidad sin perder tu contenido. 
+                        Transformamos sitios obsoletos en plataformas modernas que generan resultados para tu negocio.
+                    </p>
+                </div>
+                
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-white">Adaptación Móvil/Tablet</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Garantizamos que tu web se vea perfecta en todos los dispositivos, desde smartphones hasta tablets y desktops. 
+                        Implementamos diseño responsive que se adapta automáticamente a cualquier tamaño de pantalla.
+                    </p>
+                </div>
+                
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tachometer-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-white">Optimización de Velocidad</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Mejoramos el rendimiento de tu web para cargas rápidas y mejor posicionamiento en buscadores. 
+                        Optimizamos imágenes, código y configuración del servidor para obtener tiempos de carga inferiores a 3 segundos.
+                    </p>
+                </div>
+                
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-white">SEO Técnico Básico</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Implementamos las mejores prácticas de SEO para que tu web sea encontrada más fácilmente por tus clientes. 
+                        Configuramos metaetiquetas, estructura semántica y optimización para motores de búsqueda.
+                    </p>
+                </div>
+                
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-white">Mantenimiento Básico</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Ofrecemos soporte continuo para mantener tu web actualizada, segura y funcionando perfectamente. 
+                        Incluye actualizaciones de seguridad, copias de respaldo y soporte técnico por email.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display font-bold text-3xl md:text-5xl mb-6">
+                    ¿Por qué elegirnos?
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Lo que nos hace diferentes del resto
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-white text-3xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-white">Entrega en 10 Días</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Somos los más rápidos del mercado. Tu web completamente funcional y lista en solo 10 días garantizados. 
+                        No más esperas interminables de meses para tener tu presencia online activa.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bolt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-white">Respuesta Ultrarrápida</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Contestamos en menos de 24 horas y trabajamos con agilidad para no perder tiempo en tu proyecto. 
+                        Comunicación constante y transparente durante todo el proceso de desarrollo.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-euro-sign text-white text-3xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-white">Precios Competitivos</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Hasta 70% más baratos que la competencia. Precios pensados para pequeños y medianos negocios 
+                        que necesitan calidad profesional sin costes excesivos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="proceso" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display font-bold text-3xl md:text-5xl mb-6">
+                    Nuestro <span class="gradient-text">proceso</span> de trabajo
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Cómo llevamos tu proyecto desde la idea hasta la realidad en solo 10 días
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold">1</span>
+                    </div>
+                    <h3 class="font-display font-semibold text-lg mb-2 text-white">Contacto Inicial</h3>
+                    <p class="text-gray-400 text-sm">Nos cuentas tu idea y necesidades. Respondemos en menos de 24 horas.</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold">2</span>
+                    </div>
+                    <h3 class="font-display font-semibold text-lg mb-2 text-white">Análisis del Negocio</h3>
+                    <p class="text-gray-400 text-sm">Estudiamos tu negocio, objetivos y competencia para proponer la mejor solución.</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold">3</span>
+                    </div>
+                    <h3 class="font-display font-semibold text-lg mb-2 text-white">Propuesta de Diseño</h3>
+                    <p class="text-gray-400 text-sm">Presentamos el diseño propuesto y presupuesto detallado para tu aprobación.</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold">4</span>
+                    </div>
+                    <h3 class="font-display font-semibold text-lg mb-2 text-white">Desarrollo Ágil</h3>
+                    <p class="text-gray-400 text-sm">Construimos tu web con las mejores tecnologías, manteniéndote informado del progreso.</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold">5</span>
+                    </div>
+                    <h3 class="font-display font-semibold text-lg mb-2 text-white">Entrega Total</h3>
+                    <p class="text-gray-400 text-sm">Tu web completamente funcional y lista en solo 10 días desde la aprobación.</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold">6</span>
+                    </div>
+                    <h3 class="font-display font-semibold text-lg mb-2 text-white">Mantenimiento</h3>
+                    <p class="text-gray-400 text-sm">Soporte continuo opcional para mantener tu web siempre actualizada y segura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display font-bold text-3xl md:text-5xl mb-6">
+                    Lo que dicen nuestros <span class="gradient-text">clientes</span>
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">M</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">María García</h4>
+                            <p class="text-gray-400 text-sm">Dueña de Cafetería Central</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        "Increíble trabajo. En solo 10 días teníamos nuestra nueva web funcionando perfectamente. 
+                        Los chicos de Black Box son rápidos, profesionales y el precio fue muy competitivo. 
+                        Ahora tenemos muchos más clientes gracias a nuestra presencia online."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">C</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">Carlos López</h4>
+                            <p class="text-gray-400 text-sm">Director de AutoLópez</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        "Renovaron nuestra web antigua y ahora carga súper rápido. La atención al cliente es excelente, 
+                        siempre responden rápido. Muy recomendados para negocios pequeños que necesitan profesionalidad 
+                        sin gastar una fortuna."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">A</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">Ana Martínez</h4>
+                            <p class="text-gray-400 text-sm">Fundadora de Belleza Ana</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        "Excelente relación calidad-precio. Mi nueva web es moderna, rápida y se ve perfecta en el móvil. 
+                        El proceso fue súper ágil y profesional. ¡Muy contenta con el resultado! 
+                        Mis clientes ahora pueden reservar citas online fácilmente."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-display font-bold text-3xl md:text-5xl mb-6">
+                        ¿Listo para empezar?
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Contáctanos y obtén tu presupuesto sin compromiso
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="">
+                        <h3 class="font-display font-bold text-2xl mb-6 text-white">
+                            Información de contacto
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold">Email</p>
+                                    <p class="text-gray-400">blackboxinformatica04@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold">Teléfono</p>
+                                    <p class="text-gray-400">608 16 13 20</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fab fa-linkedin-in text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold">Linkedin</p>
+                                    <div class="flex flex-col text-gray-400">
+                                        <a href="https://www.linkedin.com/in/alejandro-torres-lemos-737555254" target="_blank" rel="noopener" class="hover:text-white underline underline-offset-2">Alejandro Torres Lemos</a>
+                                        <a href="https://www.linkedin.com/in/marcel-roig-gil-490b51315" target="_blank" rel="noopener" class="hover:text-white underline underline-offset-2">Marcel Roig Gil</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-6 glass rounded-2xl">
+                            <h4 class="font-semibold text-white mb-3">¿Por qué esperar?</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Cada día que pasa es una oportunidad perdida de tener presencia online. 
+                                Con Black Box Informática, tu web estará lista en solo 10 días. 
+                                No encontrarás una combinación mejor de velocidad, calidad y precio en el mercado.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <form id="contactForm"
+                            action="https://api.web3forms.com/submit"
+                            method="POST"
+                            target="_self"
+                            class="space-y-6">
+
+                            <!-- Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="a5758c87-19d9-4a9e-84a5-d9211227916f">
+
+                            <!-- Subject (IMPORTANTE: evita SPAM) -->
+                            <input type="hidden" name="subject" value="Nuevo mensaje desde la web Black Box Informática">
+
+                            <!-- From name (mejora reputación) -->
+                            <input type="hidden" name="from_name" value="Black Box Web Form">
+
+                            <!-- Redirección -->
+                            <input type="hidden" name="redirect" value="http://localhost:3000/gracias.html">
+
+                            <!-- Anti-spam (honeypot CORRECTO) -->
+                            <input type="text" name="botcheck" class="hidden" style="display:none !important">
+
+                            <div>
+                                <label for="nombre" class="block text-white font-semibold mb-2">Nombre completo *</label>
+                                <input type="text" id="nombre" name="nombre" required 
+                                    class="form-input w-full px-4 py-3 rounded-xl border transition-all" 
+                                    placeholder="Tu nombre completo">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-white font-semibold mb-2">Correo electrónico *</label>
+                                <input type="email" id="email" name="email" required 
+                                    class="form-input w-full px-4 py-3 rounded-xl border transition-all" 
+                                    placeholder="tu@email.com">
+                            </div>
+                            
+                            <div>
+                                <label for="telefono" class="block text-white font-semibold mb-2">Teléfono (opcional)</label>
+                                <input type="tel" id="telefono" name="telefono" 
+                                    class="form-input w-full px-4 py-3 rounded-xl border transition-all" 
+                                    placeholder="Tu número de teléfono">
+                            </div>
+                            
+                            <div>
+                                <label for="mensaje" class="block text-white font-semibold mb-2">Cuéntanos sobre tu proyecto *</label>
+                                <textarea id="mensaje" name="mensaje" rows="4" required 
+                                        class="form-input w-full px-4 py-3 rounded-xl resize-none border transition-all" 
+                                        placeholder="Describe tu negocio, qué tipo de web necesitas, y cualquier idea o requisito especial que tengas..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary w-full py-4 rounded-xl font-semibold text-lg">
+                                <span class="flex items-center justify-center space-x-2">
+                                    <span>Enviar mensaje</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </span>
+                            </button>
+
+                            <!-- Error message -->
+                            <div id="formError" class="text-red-500 font-semibold mt-2 hidden"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                    <img src="assets/images/logotipo_Bueno_SinFondo.png" alt="Black Box Informática - Logo" class="logo-img" loading="lazy" />
+                    <div>
+                        <h3 class="font-display font-bold text-xl text-white">Black Box Informática</h3>
+                        <p class="text-gray-400 text-sm">Diseño web profesional en 10 días</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap items-center justify-center space-x-6 text-sm">
+                    <a href="#inicio" class="text-gray-400 hover:text-white transition-colors">Inicio</a>
+                    <a href="#servicios" class="text-gray-400 hover:text-white transition-colors">Servicios</a>
+                    <a href="#proceso" class="text-gray-400 hover:text-white transition-colors">Proceso</a>
+                    <a href="#contacto" class="text-gray-400 hover:text-white transition-colors">Contacto</a>
+                    <a href="privacidad.html" class="text-gray-400 hover:text-white transition-colors">Privacidad</a>
+                    <a href="legal.html" class="text-gray-400 hover:text-white transition-colors">Aviso Legal</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Black Box Informática. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+<script>
+const form = document.getElementById("contactForm");
+const errorBox = document.getElementById("formError");
+
+const campos = {
+    nombre: document.getElementById("nombre"),
+    email: document.getElementById("email"),
+    telefono: document.getElementById("telefono"),
+    mensaje: document.getElementById("mensaje")
+};
+
+// Regex
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const telefonoRegex = /^[0-9+\-\s]{7,15}$/;
+
+// ---------------------------
+// Función de validación individual
+// ---------------------------
+function validarCampo(campo, regex = null, obligatorio = false) {
+    const valor = campo.value.trim();
+    const contenedor = campo.parentElement;
+
+    // Si es obligatorio y está vacío
+    if (obligatorio && !valor) {
+        contenedor.classList.add("shake");
+        mostrarInvalido(campo);
+        return false;
+    }
+
+    // Si tiene regex y no cumple
+    if (regex && valor && !regex.test(valor)) {
+        contenedor.classList.add("shake");
+        mostrarInvalido(campo);
+        return false;
+    }
+
+    // Si todo OK
+    mostrarValido(campo);
+    return true;
+}
+
+// ---------------------------
+// Estilos valid/invalid
+// ---------------------------
+function mostrarValido(campo) {
+    campo.classList.remove("border-red-500");
+    campo.classList.add("border-green-500");
+}
+
+function mostrarInvalido(campo) {
+    campo.classList.remove("border-green-500");
+    campo.classList.add("border-red-500");
+}
+
+// ---------------------------
+// Efecto shake
+// ---------------------------
+function limpiarShake() {
+    document.querySelectorAll(".shake").forEach(el => {
+        el.classList.remove("shake");
+    });
+}
+
+// ---------------------------
+// Validación al enviar FORM
+// ---------------------------
+form.addEventListener("submit", function(event) {
+
+    limpiarShake();
+    errorBox.style.display = "none";
+
+    const validoNombre = validarCampo(campos.nombre, null, true);
+    const validoEmail  = validarCampo(campos.email, emailRegex, true);
+    const validoTel    = validarCampo(campos.telefono, telefonoRegex, false);
+    const validoMsg    = validarCampo(campos.mensaje, null, true);
+
+    if (!validoNombre || !validoEmail || !validoTel || !validoMsg) {
+        event.preventDefault();
+        errorBox.textContent = "Por favor, revisa los campos marcados en rojo.";
+        errorBox.style.display = "block";
+        return;
+    }
+});
+
+// ---------------------------
+// Validación en tiempo real
+// ---------------------------
+campos.nombre.addEventListener("input", () => validarCampo(campos.nombre, null, true));
+campos.email.addEventListener("input", () => validarCampo(campos.email, emailRegex, true));
+campos.telefono.addEventListener("input", () => validarCampo(campos.telefono, telefonoRegex, false));
+campos.mensaje.addEventListener("input", () => validarCampo(campos.mensaje, null, true));
+</script>
+</body>
+</html>

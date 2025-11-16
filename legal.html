@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Legal - Black Box Informática</title>
+    <meta name="description" content="Aviso legal de Black Box Informática. Información legal sobre el sitio web y servicios ofrecidos.">
+    <link rel="icon" type="image/png" href="assets/images/logotipo_Bueno_SinFondo.png">
+    <link rel="apple-touch-icon" href="assets/images/logotipo_Bueno_SinFondo.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-black: #0C0C0C;
+            --dark-brown: #481E14;
+            --medium-orange: #9B3922;
+            --bright-orange: #F2613F;
+            --text-light: #F5F5F5;
+            --text-gray: #A0A0A0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-black);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--bright-orange) 0%, var(--medium-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--bright-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--bright-orange) 0%, var(--medium-orange) 100%);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(242, 97, 63, 0.3);
+        }
+
+        /* Logo */
+        .logo-img {
+            height: 64px;
+            width: auto;
+            display: block;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .logo-img { height: 52px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="assets/images/logotipo_Bueno_SinFondo.png" alt="Black Box Informática - Logo" class="logo-img" />
+                    <span class="font-display font-bold text-xl text-white">Black Box</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white">Inicio</a>
+                    <a href="index.html#servicios" class="nav-link text-gray-300 hover:text-white">Servicios</a>
+                    <a href="index.html#proceso" class="nav-link text-gray-300 hover:text-white">Proceso</a>
+                    <a href="index.html#contacto" class="nav-link text-gray-300 hover:text-white">Contacto</a>
+                    <a href="index.html#contacto" class="btn-primary px-6 py-2 rounded-lg font-medium">Empezar</a>
+                </div>
+                
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-12">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12">
+                <h1 class="font-display font-bold text-3xl md:text-5xl mb-6">
+                    <span class="gradient-text">Aviso Legal</span>
+                </h1>
+                <p class="text-xl text-gray-400">
+                    Última actualización: 17 de noviembre de 2025
+                </p>
+            </div>
+
+            <div class="glass p-8 rounded-2xl">
+                <div class="prose prose-invert max-w-none">
+                    <h2 class="text-2xl font-bold mb-4 text-white">1. Datos del Responsable</h2>
+                    <p class="mb-6 text-gray-300">
+                        En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se informa que:
+                    </p>
+                    
+                    <div class="bg-gray-800 p-6 rounded-xl mb-6">
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Titular:</strong> Black Box Informática</li>
+                            <li><strong>Email de contacto:</strong> blackboxinformatica04@gmail.com</li>
+                            <li><strong>Actividad:</strong> Diseño y desarrollo de páginas web</li>
+                            <li><strong>Objeto social:</strong> Servicios de informática y desarrollo web para pequeñas y medianas empresas</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">2. Condiciones de Uso</h2>
+                    <p class="mb-6 text-gray-300">
+                        El acceso y uso de este sitio web atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las Condiciones Generales de Uso aquí reflejadas.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold mb-3 text-white">2.1 Uso del Sitio Web</h3>
+                    <p class="mb-4 text-gray-300">
+                        El USUARIO se compromete a utilizar el sitio web y sus servicios de conformidad con la ley, la moral, el orden público y las presentes Condiciones Generales de Uso.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold mb-3 text-white">2.2 Responsabilidades del Usuario</h3>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li>El USUARIO responderá de los daños y perjuicios de toda naturaleza que Black Box Informática pudiera sufrir</li>
+                        <li>Se abstendrá de suprimir, alterar, eludir o manipular dispositivos de protección del sitio web</li>
+                        <li>No realizará ninguna acción que pueda dañar, inutilizar o sobrecargar el sitio web</li>
+                        <li>No introducirá programas, virus, macros, applets, controles ActiveX o cualquier dispositivo lógico o secuencia de caracteres que causen o sean susceptibles de causar alteraciones en los sistemas informáticos de terceros</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">3. Propiedad Intelectual</h2>
+                    <p class="mb-6 text-gray-300">
+                        El sitio web, incluyendo a título enunciativo pero no limitativo su programación, edición, compilación y demás elementos necesarios para su funcionamiento, los diseños, logotipos, texto y/o gráficos son propiedad de Black Box Informática o, en su caso, dispone de licencia o autorización expresa por parte de los autores.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold mb-3 text-white">3.1 Derechos de Autor</h3>
+                    <p class="mb-4 text-gray-300">
+                        Todos los contenidos del sitio web están protegidos por las normas nacionales e internacionales de propiedad intelectual e industrial. Queda expresamente prohibida la reproducción, distribución, comunicación pública y transformación sin la autorización expresa de Black Box Informática.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">4. Responsabilidad</h2>
+                    <h3 class="text-xl font-semibold mb-3 text-white">4.1 Limitación de Responsabilidad</h3>
+                    <p class="mb-4 text-gray-300">
+                        Black Box Informática no se hace responsable de:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li>Los daños y perjuicios de cualquier naturaleza que pudieran derivarse del acceso a los contenidos del sitio web</li>
+                        <li>La falta de disponibilidad del sitio web por causas de fuerza mayor o errores en las líneas telefónicas</li>
+                        <li>La recepción, almacenamiento, difusión o transmisión por parte de los usuarios de los contenidos del sitio web</li>
+                        <li>Los contenidos de terceros a los que se pueda acceder a través de enlaces (links) o herramientas de búsqueda</li>
+                        <li>Los posibles errores de seguridad que se puedan producir y los posibles daños que puedan causarse al sistema informático del usuario</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">5. Enlaces de Terceros</h2>
+                    <p class="mb-6 text-gray-300">
+                        Este sitio web puede contener enlaces a sitios de terceros. Los enlaces de terceros que aparecen en esta página web tienen la finalidad de facilitar al usuario la localización de recursos de interés en Internet. Black Box Informática no asume ninguna responsabilidad sobre los contenidos de dichos sitios enlazados.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">6. Protección de Datos</h2>
+                    <p class="mb-6 text-gray-300">
+                        Para el uso de determinados servicios, el usuario debe proporcionar determinados datos de carácter personal. Black Box Informática tratará automatizadamente estos datos y aplicará las medidas de seguridad correspondientes, cumpliendo con el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo.
+                    </p>
+                    
+                    <p class="mb-6 text-gray-300">
+                        Puede consultar nuestra política de privacidad en: <a href="privacidad.html" class="text-orange-400 hover:text-orange-300">Política de Privacidad</a>
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">7. Legislación Aplicable y Jurisdicción</h2>
+                    <p class="mb-6 text-gray-300">
+                        Las presentes Condiciones Generales de Uso se regirán e interpretarán de conformidad con las leyes de España. Para cualquier controversia que pudiera surgir del acceso o uso de este sitio web, ambas partes se someten a la jurisdicción de los tribunales de la ciudad de Madrid, renunciando expresamente a cualquier otro fuero que pudiera corresponderles.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">8. Modificaciones</h2>
+                    <p class="mb-6 text-gray-300">
+                        Black Box Informática se reserva el derecho de modificar, en cualquier momento y sin necesidad de previo aviso, la presentación, configuración y contenidos del sitio web, así como las presentes Condiciones Generales de Uso.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4 text-white">9. Contacto</h2>
+                    <p class="mb-6 text-gray-300">
+                        Si tiene alguna pregunta sobre este Aviso Legal, puede contactar con nosotros a través de:
+                    </p>
+                    <ul class="list-disc list-inside mb-6 text-gray-300 space-y-2">
+                        <li>Email: blackboxinformatica04@gmail.com</li>
+                        <li>Asunto: "Consulta Legal"</li>
+                    </ul>
+
+                    <div class="mt-8 p-6 bg-gray-800 rounded-xl text-center">
+                        <p class="text-sm text-gray-400">
+                            Al utilizar este sitio web, usted acepta las condiciones establecidas en este Aviso Legal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                    <img src="assets/images/logotipo_Bueno_SinFondo.png" alt="Black Box Informática - Logo" class="logo-img" loading="lazy" />
+                    <div>
+                        <h3 class="font-display font-bold text-xl text-white">Black Box Informática</h3>
+                        <p class="text-gray-400 text-sm">Diseño web profesional en 10 días</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap items-center justify-center space-x-6 text-sm">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Inicio</a>
+                    <a href="index.html#servicios" class="text-gray-400 hover:text-white transition-colors">Servicios</a>
+                    <a href="index.html#proceso" class="text-gray-400 hover:text-white transition-colors">Proceso</a>
+                    <a href="index.html#contacto" class="text-gray-400 hover:text-white transition-colors">Contacto</a>
+                    <a href="privacidad.html" class="text-gray-400 hover:text-white transition-colors">Privacidad</a>
+                    <a href="legal.html" class="text-gray-400 hover:text-white transition-colors">Aviso Legal</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Black Box Informática. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            // Simple mobile menu functionality
+            alert('Menú móvil - Funcionalidad básica');
+        }
+    </script>
+</body>
+</html>
