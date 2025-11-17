@@ -41,6 +41,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        html {
+    scroll-behavior: smooth;
+}
         :root {
             --primary-black: #0C0C0C;
             --dark-brown: #481E14;
@@ -250,14 +253,30 @@
             width: 100%;
         }
         
-        /* Mobile Menu */
+        /* Mobile Menu (estado inicial oculto con translate y visibility) */
         .mobile-menu {
             transform: translateX(100%);
-            transition: transform 0.3s ease;
+            visibility: hidden;
+            pointer-events: none;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+            right: 0;
+            left: auto;
         }
-        
         .mobile-menu.active {
             transform: translateX(0);
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* Backdrop (sin display:none para permitir transición) */
+        #mobileBackdrop {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        #mobileBackdrop.active {
+            opacity: 1;
+            visibility: visible;
         }
         
         /* Responsive */
@@ -307,14 +326,18 @@
                     <a href="#contacto" class="btn-primary px-6 py-2 rounded-lg font-medium">Empezar</a>
                 </div>
                 
-                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                <button id="menuBtn" class="md:hidden text-white" aria-label="Abrir menú" aria-expanded="false">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-40 md:hidden">
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-40 md:hidden relative">
+            <!-- Botón cerrar -->
+            <button id="closeMobileMenu" aria-label="Cerrar menú" class="absolute top-4 right-4 text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
             <div class="p-6 pt-20">
                 <a href="#inicio" class="block py-3 text-gray-300 hover:text-white">Inicio</a>
                 <a href="#servicios" class="block py-3 text-gray-300 hover:text-white">Servicios</a>
@@ -323,6 +346,8 @@
                 <a href="#contacto" class="btn-primary block px-6 py-3 rounded-lg font-medium mt-4 text-center">Empezar</a>
             </div>
         </div>
+        <!-- Fondo oscurecido -->
+        <div id="mobileBackdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"></div>
     </nav>
 
     <!-- Hero Section -->

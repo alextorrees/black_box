@@ -300,10 +300,12 @@
         }
         </script>
         <script>
-        // Mobile menu toggle
+        // Mobile menu toggle (si existe #mobileMenu)
         function toggleMobileMenu() {
-            // Simple mobile menu functionality
-            alert('Menú móvil - Funcionalidad básica');
+            var mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('active');
+            }
         }
     </script>
 </body>
