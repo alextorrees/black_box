@@ -272,21 +272,44 @@
         #mobileBackdrop {
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
             transition: opacity 0.2s ease, visibility 0.2s ease;
         }
         #mobileBackdrop.active {
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .process-step::after {
-                display: none;
-            }
-            /* Logo a tamaño ligeramente menor en móvil */
-            .logo-img { height: 52px; }
+            .process-step::after { display: none; }
+            .logo-img { height: 44px; }
+            nav.fixed .container { padding-top: 0.35rem; padding-bottom: 0.35rem; }
+            nav.glass { backdrop-filter: blur(6px); }
+            #inicio { min-height: 55vh !important; padding-top: 70px; padding-bottom: 28px; }
+            #inicio h1 { font-size: 1.9rem; line-height: 1.15; }
+            #inicio p { font-size: 1rem; }
         }
+
+        /* Tablet ajustes (≤1024px) */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .logo-img { height: 54px; }
+            nav.fixed .container { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+            nav.glass { backdrop-filter: blur(8px); }
+            #inicio { min-height: 65vh !important; padding-top: 84px; padding-bottom: 48px; }
+        }
+
+        /* Ajuste intermedio para pantallas muy pequeñas (≤480px) */
+        @media (max-width: 480px) {
+            #inicio { min-height: 50vh !important; padding-top: 64px; padding-bottom: 24px; }
+            #inicio h1 { font-size: 1.75rem; }
+            #inicio .gap-4 > a { padding: 0.85rem 1.4rem; }
+        }
+
+        /* Evitar que el menú móvil se vea antes de que JS cargue (refuerzo) */
+        #mobileMenu:not(.active) { visibility: hidden; pointer-events: none; }
+        #mobileBackdrop:not(.active) { visibility: hidden; pointer-events: none; }
 
         /* Logo */
         .logo-img {
@@ -352,7 +375,7 @@
 
     <!-- Hero Section -->
         <main id="main-content" role="main">
-    <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center relative pt-20">
+    <section id="inicio" class="hero-bg flex items-center justify-center relative pt-16 lg:min-h-screen md:min-h-[70vh] min-h-[55vh]">
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="max-w-4xl mx-auto">
                 <h1 class="font-display font-black text-4xl md:text-6xl lg:text-7xl mb-6">
