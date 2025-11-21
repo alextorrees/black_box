@@ -12,15 +12,20 @@ function initMobileMenu() {
   const closeBtn = document.getElementById('closeMobileMenu');
   const mobileMenu = document.getElementById('mobileMenu');
   const backdrop = document.getElementById('mobileBackdrop');
+  const menuIcon = menuBtn ? menuBtn.querySelector('i') : null;
   if (!mobileMenu || !menuBtn) return;
 
   function setMenuState(open) {
     if (open) {
       mobileMenu.classList.add('active');
       if (backdrop) backdrop.classList.add('active');
+      menuBtn.setAttribute('aria-label', 'Cerrar menú');
+      if (menuIcon) menuIcon.className = 'fas fa-times text-xl';
     } else {
       mobileMenu.classList.remove('active');
       if (backdrop) backdrop.classList.remove('active');
+      menuBtn.setAttribute('aria-label', 'Abrir menú');
+      if (menuIcon) menuIcon.className = 'fas fa-bars text-xl';
     }
     menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
@@ -28,7 +33,8 @@ function initMobileMenu() {
   // Estado inicial cerrado
   setMenuState(false);
 
-  menuBtn.addEventListener('click', () => setMenuState(true));
+  // Toggle en el mismo botón (hamburguesa <-> X)
+  menuBtn.addEventListener('click', () => setMenuState(!mobileMenu.classList.contains('active')));
   if (closeBtn) closeBtn.addEventListener('click', () => setMenuState(false));
   if (backdrop) backdrop.addEventListener('click', () => setMenuState(false));
 
@@ -40,7 +46,7 @@ function initMobileMenu() {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenuState(false); });
 
   // Cierre al pasar a desktop
-  window.addEventListener('resize', () => { if (window.innerWidth >= 768) setMenuState(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth >= 1024) setMenuState(false); });
 }
 
 // Smooth scrolling
