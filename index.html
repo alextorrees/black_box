@@ -160,6 +160,11 @@
         /* Process Steps */
         .process-step {
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+            border-radius: 16px;
+            padding: 18px 14px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
         
         .process-step::after {
@@ -169,12 +174,40 @@
             right: -20px;
             width: 40px;
             height: 2px;
-            background: var(--medium-orange);
+            background: linear-gradient(90deg, var(--medium-orange), var(--bright-orange));
             transform: translateY(-50%);
+            transition: width 0.25s ease, opacity 0.25s ease;
         }
         
         .process-step:last-child::after {
             display: none;
+        }
+
+        .process-step:hover,
+        .process-step.active,
+        .process-step:focus-within {
+            transform: translateY(-6px);
+            border-color: var(--bright-orange);
+            box-shadow: 0 12px 28px rgba(242, 97, 63, 0.18);
+        }
+
+        .process-step:hover::after,
+        .process-step.active::after,
+        .process-step:focus-within::after {
+            width: 60px;
+        }
+
+        .step-badge {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+            box-shadow: 0 0 0 0 rgba(242, 97, 63, 0.0);
+        }
+
+        .process-step:hover .step-badge,
+        .process-step.active .step-badge,
+        .process-step:focus-within .step-badge {
+            transform: scale(1.06);
+            box-shadow: 0 0 0 8px rgba(242, 97, 63, 0.12);
+            filter: saturate(1.15);
         }
         
         /* Testimonial Cards */
@@ -639,50 +672,54 @@
                     Cómo llevamos tu proyecto desde la idea hasta la realidad en solo 10 días
                 </p>
             </div>
+            <!-- Progress bar -->
+            <div class="relative h-1 bg-gray-800 rounded-full mb-10 overflow-hidden">
+                <div id="processProgress" class="h-full w-0 bg-gradient-to-r from-orange-400 to-red-500"></div>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-                <div class="process-step text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="process-step text-center" tabindex="0" aria-label="Paso 1: Contacto Inicial">
+                    <div class="step-badge w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span class="text-white font-bold">1</span>
                     </div>
                     <h3 class="font-display font-semibold text-lg mb-2 text-white">Contacto Inicial</h3>
                     <p class="text-gray-400 text-sm">Nos cuentas tu idea y necesidades. Respondemos en menos de 24 horas.</p>
                 </div>
                 
-                <div class="process-step text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="process-step text-center" tabindex="0" aria-label="Paso 2: Análisis del Negocio">
+                    <div class="step-badge w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span class="text-white font-bold">2</span>
                     </div>
                     <h3 class="font-display font-semibold text-lg mb-2 text-white">Análisis del Negocio</h3>
                     <p class="text-gray-400 text-sm">Estudiamos tu negocio, objetivos y competencia para proponer la mejor solución.</p>
                 </div>
                 
-                <div class="process-step text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="process-step text-center" tabindex="0" aria-label="Paso 3: Propuesta de Diseño">
+                    <div class="step-badge w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span class="text-white font-bold">3</span>
                     </div>
                     <h3 class="font-display font-semibold text-lg mb-2 text-white">Propuesta de Diseño</h3>
                     <p class="text-gray-400 text-sm">Presentamos el diseño propuesto y presupuesto detallado para tu aprobación.</p>
                 </div>
                 
-                <div class="process-step text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="process-step text-center" tabindex="0" aria-label="Paso 4: Desarrollo Ágil">
+                    <div class="step-badge w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span class="text-white font-bold">4</span>
                     </div>
                     <h3 class="font-display font-semibold text-lg mb-2 text-white">Desarrollo Ágil</h3>
                     <p class="text-gray-400 text-sm">Construimos tu web con las mejores tecnologías, manteniéndote informado del progreso.</p>
                 </div>
                 
-                <div class="process-step text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="process-step text-center" tabindex="0" aria-label="Paso 5: Entrega Total">
+                    <div class="step-badge w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span class="text-white font-bold">5</span>
                     </div>
                     <h3 class="font-display font-semibold text-lg mb-2 text-white">Entrega Total</h3>
                     <p class="text-gray-400 text-sm">Tu web completamente funcional y lista en solo 10 días desde la aprobación.</p>
                 </div>
                 
-                <div class="process-step text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="process-step text-center" tabindex="0" aria-label="Paso 6: Mantenimiento">
+                    <div class="step-badge w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span class="text-white font-bold">6</span>
                     </div>
                     <h3 class="font-display font-semibold text-lg mb-2 text-white">Mantenimiento</h3>

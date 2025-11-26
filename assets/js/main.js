@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initMobileMenu();
   initSmoothScrolling();
   initSimpleAnimations();
+  initProcessInteractions();
+  initProcessProgress();
 });
 
 // Mobile menu functionality
@@ -83,4 +85,40 @@ function initSimpleAnimations() {
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
+}
+
+// Interactions for process steps (hover/focus active state)
+function initProcessInteractions() {
+  const steps = document.querySelectorAll('#proceso .process-step');
+  if (!steps.length) return;
+  steps.forEach(step => {
+    step.addEventListener('mouseenter', () => step.classList.add('active'));
+    step.addEventListener('mouseleave', () => step.classList.remove('active'));
+    step.addEventListener('focus', () => step.classList.add('active'));
+    step.addEventListener('blur', () => step.classList.remove('active'));
+  });
+}
+
+// Thin progress bar filling as you scroll through the process section
+function initProcessProgress() {
+  const section = document.getElementById('proceso');
+  const bar = document.getElementById('processProgress');
+  if (!section || !bar) return;
+
+  function update() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const vh = window.innerHeight;
+    const rect = section.getBoundingClientRect();
+    const sectionTop = scrollY + rect.top;
+    const sectionHeight = section.offsetHeight;
+
+    const start = sectionTop - vh * 0.8; // start filling when section approaches
+    const end = sectionTop + sectionHeight - vh * 0.2; // finished before leaving
+    const progress = Math.min(1, Math.max(0, (scrollY - start) / (end - start)));
+    bar.style.width = (progress * 100).toFixed(2) + '%';
+  }
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', () => requestAnimationFrame(update));
 }
